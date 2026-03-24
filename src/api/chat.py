@@ -8,9 +8,9 @@ router = APIRouter()
 @router.get("/chat/stream")
 def chat_stream(
     message: str=Query(...,min_length=1,description="user message to get streaming of data"),
-    temprature: float=Query(0.7, ge=0.0,le=2.0, description="creativity")
+    temperature: float=Query(0.7, ge=0.0,le=2.0, description="creativity")
 ):
-    stream = generate_text_stream(message, temprature)
+    stream = generate_text_stream(message, temperature)
     return StreamingResponse(
         stream_token(stream),
         media_type="text/event-stream",
