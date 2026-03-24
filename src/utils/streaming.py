@@ -2,8 +2,7 @@ import asyncio
 
 async def stream_token(generators):
     try:
-        for event in generators:
-                token_text = getattr(event, "text", "")
+        for token_text in generators:
                 print(f"DEBUG: Processing token_text = '{token_text}'") 
                 if token_text:
                     for word in token_text.split(" "):
